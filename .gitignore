@@ -1,0 +1,5 @@
+# ignore all files in the egg-info directory
+*.egg-info/*
+# ignore all python cache files
+*.pyc
+examples/
