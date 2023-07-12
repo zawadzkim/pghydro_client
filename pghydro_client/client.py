@@ -178,7 +178,7 @@ class GetData:
         if institution is not None:
             if isinstance(institution, list):
                 institution = ','.join(institution)
-            params[institution] = institution
+            params['institution'] = institution
 
         if timestamp_start is not None:
             params['timestamp_start'] = timestamp_start
