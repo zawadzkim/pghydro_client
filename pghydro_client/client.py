@@ -65,7 +65,8 @@ class GetData:
     
     def get_physicochemical_parameters(self, 
                                        station: str | list = None, 
-                                       parameter: str | list = None, 
+                                       parameter: str | list = None,
+                                       institution: str | list = None,
                                        timestamp_start: str = None, 
                                        timestamp_end: str = None) -> DataFrame:
         """
@@ -107,6 +108,11 @@ class GetData:
                 parameter = ','.join(parameter)
             params['parameter'] = parameter
 
+        if institution is not None:
+            if isinstance(institution, list):
+                institution = ','.join(institution)
+            params['institution'] = institution
+
         if timestamp_start is not None:
             params['timestamp_start'] = timestamp_start
         else:
@@ -125,6 +131,7 @@ class GetData:
     def get_analyses(self, 
                      station: str | list = None, 
                      analyte: str | list = None, 
+                     institution: str | list = None, 
                      timestamp_start: str = None, 
                      timestamp_end: str = None) -> DataFrame:
         
@@ -167,6 +174,11 @@ class GetData:
             if isinstance(analyte, list):
                 analyte = ','.join(analyte)
             params['analyte'] = analyte
+
+        if institution is not None:
+            if isinstance(institution, list):
+                institution = ','.join(institution)
+            params[institution] = institution
 
         if timestamp_start is not None:
             params['timestamp_start'] = timestamp_start
